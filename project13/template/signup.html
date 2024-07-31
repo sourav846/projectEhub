@@ -1,0 +1,314 @@
+<!doctype html>
+{% load static %}
+<html lang="zxx">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="{% static 'css/style-starter.css' %}">
+	<script src="{% static 'jquery.min.js' %}"></script>
+	<script src="{% static 'regist-script.js' %}"></script>
+	<style>
+		*{ margin:0; padding: 0; font-family:'poppins', sans-serif; box-sizing: border-box; }
+		.container{margin-top:10px; width: 100%; height: 100%; position: relative; background-image: linear-gradient(#5c5c5c),(#5c5c5c), url(1login.jpg); background-position: center; }
+        .form-box{ width: 90%; max-width: 450px; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); background: #fff; padding: 50px 60px 70px; text-align: center; }
+        .form-box h1{ font-size: 50px; margin-bottom: 60px; color: #3c00a0; position: relative;  }
+        .form-box h1::after{ content: ''; width: 30px; height: 4px; border-radius: 3px; background: #3c00a0; position: absolute; bottom: -12px; left: 50%; transform: translateX(-50%); }
+        .input-field{background: #eaeaea; margin: 15px 10; border-radius: 3px; display: flex; align-items: center; max-height: 65px; transition: max-height 0.5s; overflow: hidden;}
+        form p{ margin-left:100px; text-align: center; font-size: 16px; }
+        form p a{text-decoration: none; color: #3c00a0;}
+        input{ width: 100%; background: transparent; border: 0; outline: 0; padding: 13px 61px; }
+        .btn-field{width: 100%; display: flex; justify-content: space-between;}
+        .btn-field button{flex-basis: 48%; margin-left:100px; background: #3c00a0; color: #fff; padding: 8px 15px; border-radius: 20px; border: 0; outline: 0; cursor: pointer; transition: background 1s;}
+        .input-group{height: 320px;}
+    </style>
+</head>
+<body>
+	<header id="site-header" class="w3l-header fixed-top" >
+		<nav class="navbar navbar-expand-lg navbar-light fill px-lg-0 py-0 px-3">
+			<div class="container">
+				<h1><a class="navbar-brand" href="{% url 'index' %}"><span aria-hidden="true"></span>E - hUb </a></h1>
+				<button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
+					data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="fa icon-expand fa-bars"></span>
+					<span class="fa icon-close fa-times"></span>
+				</button>
+
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				</div>
+				<div class="mobile-position">
+					<nav class="navigation">
+						<div class="theme-switch-wrapper">
+							<label class="theme-switch" for="checkbox">
+								<input type="checkbox" id="checkbox">
+								<div class="mode-container">
+									<i class="gg-sun"></i>
+									<i class="gg-moon"></i>
+								</div>
+							</label>
+						</div>
+					</nav>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	<div class="container">
+		<img class="img-fluid" style="background-size: 1000px 500px; margin-bottom:80px; margin-top:80px;" src="{% static 'images/1login.jpg' %}" alt="">
+
+		<div class="form-box">
+			<h1 id="title">Sign Up</h1>
+			{% for m in messages %}
+				{{m}}
+				{% endfor %}
+
+			<form method="POST" action="">
+				{% csrf_token %}
+				
+				<div class="input-group">
+
+					<div class="input-field" >
+<!--						<i class="fa-solid fa-user"></i>-->
+						<input type="text" id="namefield" placeholder="Name" name="Name" required>
+					
+					</div>
+
+					<div class="input-field" >
+<!--						<i class="fa-solid fa-envelope"></i>-->
+						<input type="email" id="emailfield" placeholder="Email" name="Email" required>
+						
+					</div>
+
+					<div class="input-field" >
+<!--						<i class="fa-solid fa-lock"></i>-->
+						<input type="password" id="passwordfield" placeholder="Password" name="Password" required>
+						
+					</div>
+
+<!--					<p>Lost Password <a href="#"> Click Here</a></p>-->
+
+				</div>
+
+				<div class="btn-field">
+					<button type="submit" id="signup_btn">Sign Up</button>
+				</div>
+				
+			</form>
+
+		</div>
+
+	</div>
+</body>
+</html>
+
+
+<script src="{% static 'js/jquery-1.9.1.min.js' %}"></script>
+  <script src="{% static 'js/easyResponsiveTabs.js' %}"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      //Horizontal Tab
+      $('#parentHorizontalTab').easyResponsiveTabs({
+        type: 'default', //Types: default, vertical, accordion
+        width: 'auto', //auto or any width like 600px
+        fit: true, // 100% fit in a container
+        tabidentify: 'hor_1', // The tab groups identifier
+        activate: function (event) { // Callback function if tab is switched
+          var $tab = $(this);
+          var $info = $('#nested-tabInfo');
+          var $name = $('span', $info);
+          $name.text($tab.text());
+          $info.show();
+        }
+      });
+    });
+  </script>
+<!-- //responsive tabs -->
+<!--/theme-change-->
+<script src="{% static 'js/theme-change.js' %}"></script>
+<!-- //theme-change-->
+<script src="{% static 'js/owl.carousel.js' %}"></script>
+<!-- script for banner slider-->
+<script>
+	$(document).ready(function () {
+		$('.owl-one').owlCarousel({
+			stagePadding:280,
+			loop: true,
+			margin: 20,
+			nav: true,
+			responsiveClass: true,
+			autoplay: true,
+			autoplayTimeout: 5000,
+			autoplaySpeed: 1000,
+			autoplayHoverPause: false,
+			responsive: {
+				0: {
+					items: 1,
+					stagePadding:40,
+					nav: false
+				},
+				480: {
+					items: 1,
+					stagePadding:60,
+					nav: true
+				},
+				667: {
+					items: 1,
+					stagePadding:80,
+					nav: true
+				},
+				1000: {
+					items: 1,
+					nav: true
+				}
+			}
+		})
+	})
+</script>
+<!-- //script -->
+<script>
+	$(document).ready(function () {
+		$('.owl-three').owlCarousel({
+			loop: true,
+			margin: 20,
+			nav: false,
+			responsiveClass: true,
+			autoplay: true,
+			autoplayTimeout: 5000,
+			autoplaySpeed: 1000,
+			autoplayHoverPause: false,
+			responsive: {
+				0: {
+					items: 2,
+					nav: false
+				},
+				480: {
+					items: 2,
+					nav: true
+				},
+				667: {
+					items: 3,
+					nav: true
+				},
+				1000: {
+					items: 5,
+					nav: true
+				}
+			}
+		})
+	})
+</script>
+<!-- //script -->
+<!-- /mid-script -->
+<script>
+	$(document).ready(function () {
+		$('.owl-mid').owlCarousel({
+			loop: true,
+			margin: 0,
+			nav: false,
+			responsiveClass: true,
+			autoplay: true,
+			autoplayTimeout: 5000,
+			autoplaySpeed: 1000,
+			autoplayHoverPause: false,
+			responsive: {
+				0: {
+					items: 1,
+					nav: false
+				},
+				480: {
+					items: 1,
+					nav: false
+				},
+				667: {
+					items: 1,
+					nav: true
+				},
+				1000: {
+					items: 1,
+					nav: true
+				}
+			}
+		})
+	})
+</script>
+<!-- //mid-script -->
+
+<!-- script for owlcarousel -->
+<!-- Template JavaScript -->
+<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+<script>
+	$(document).ready(function () {
+		$('.popup-with-zoom-anim').magnificPopup({
+			type: 'inline',
+
+			fixedContentPos: false,
+			fixedBgPos: true,
+
+			overflowY: 'auto',
+
+			closeBtnInside: true,
+			preloader: false,
+
+			midClick: true,
+			removalDelay: 300,
+			mainClass: 'my-mfp-zoom-in'
+		});
+
+		$('.popup-with-move-anim').magnificPopup({
+			type: 'inline',
+
+			fixedContentPos: false,
+			fixedBgPos: true,
+
+			overflowY: 'auto',
+
+			closeBtnInside: true,
+			preloader: false,
+
+			midClick: true,
+			removalDelay: 300,
+			mainClass: 'my-mfp-slide-bottom'
+		});
+	});
+</script>
+<!--//-->
+<!-- disable body scroll which navbar is in active -->
+<script>
+	$(function () {
+		$('.navbar-toggler').click(function () {
+			$('body').toggleClass('noscroll');
+		})
+	});
+</script>
+<!-- disable body scroll which navbar is in active -->
+
+<!--/MENU-JS-->
+<script>
+	$(window).on("scroll", function () {
+		var scroll = $(window).scrollTop();
+
+		if (scroll >= 80) {
+			$("#site-header").addClass("nav-fixed");
+		} else {
+			$("#site-header").removeClass("nav-fixed");
+		}
+	});
+
+	//Main navigation Active Class Add Remove
+	$(".navbar-toggler").on("click", function () {
+		$("header").toggleClass("active");
+	});
+	$(document).on("ready", function () {
+		if ($(window).width() > 991) {
+			$("header").removeClass("active");
+		}
+		$(window).on("resize", function () {
+			if ($(window).width() > 991) {
+				$("header").removeClass("active");
+			}
+		});
+	});
+</script>
+<!--//MENU-JS-->
+
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
